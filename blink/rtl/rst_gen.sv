@@ -8,12 +8,12 @@ module rst_gen (
     logic [2:0]	rst_cpt;
     always_ff @(posedge clk_i) begin
         if (rst_i)
-            rst_cpt = 3'b0;
+            rst_cpt <= 3'b0;
         else begin
             if (rst_cpt == 3'b100)
-                rst_cpt = rst_cpt;
+                rst_cpt <= rst_cpt;
             else
-                rst_cpt = rst_cpt + 3'b1;
+                rst_cpt <= rst_cpt + 3'b1;
         end
     end
 

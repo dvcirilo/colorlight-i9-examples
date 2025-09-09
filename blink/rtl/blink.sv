@@ -1,9 +1,9 @@
 module blink (
     input  logic clk_i,
     input  logic btn_i,
-    output logic [7:0] led_o,
+    output logic [8:0] led_o
 );
-    localparam MAX = 12_500_000;
+    localparam MAX = 1_562_500;
     localparam WIDTH = $clog2(MAX);
 
     logic rst_s;
@@ -26,9 +26,9 @@ module blink (
         cpt_s <= (rst_s || end_s) ? {WIDTH{1'b0}} : cpt_next_s;
 
         if (rst_s || ~btn_i)
-            led_o <= 8'b00000001;
+            led_o <= 9'b1;
         else if (end_s) begin
-            led_o <= (led_o == 0) ? 8'b00000001 : led_o << 1;
+            led_o <= (led_o == 0) ? 9'b1 : (led_o << 1) ^ 9'b100000000;
         end
     end
 endmodule

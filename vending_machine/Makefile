@@ -1,27 +1,14 @@
-TARGET=vending_machine
-TOP=vending_machine
+# -------------------------------
+# Basic configs
+# -------------------------------
+TOP       = vending_machine
+BUILDDIR  = build
 
-OBJS+=adder.sv register.sv comparator.sv datapath.sv fsm.sv clk_div.sv debouncer.sv edge_detector.sv vending_machine.sv
+# -------------------------------
+# Sources
+# -------------------------------
+SRCS      = rtl/*.sv
+TB        = tb/tb_$(TOP).sv
+LPF 	  = fpga/$(TOP).lpf
 
-TRELLIS=/usr/local/share/trellis
-
-all: ${TARGET}.bit
-
-$(TARGET).json: $(OBJS)
-	yosys -p "synth_ecp5 -json $@" $(OBJS)
-
-$(TARGET)_out.config: $(TARGET).json
-	nextpnr-ecp5 --45k --package CABGA381 --speed 6 --json $< --textcfg $@ --lpf $(TARGET).lpf --freq 65
-
-$(TARGET).bit: $(TARGET)_out.config
-	ecppack --compress --svf ${TARGET}.svf $< $@
-
-${TARGET}.svf : ${TARGET}.bit
-
-prog: ${TARGET}.svf
-	dapprog ${TARGET}.svf
-
-clean:
-	rm -f *.svf *.bit *.config *.ys
-
-.PHONY: prog clean
+include ../rules.mk

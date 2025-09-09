@@ -7,14 +7,14 @@ module tb_matrix_kbd;
         .clk_i(clk),
         .rst_ni(rst_n),
         .column_i(column),
-        .row_i(row),
+        .row_o(row),
         .led_o(led)
     );
 
     always #5 clk = ~clk;
 
     initial begin
-        $dumpfile("out.vcd");
+        $dumpfile("build/matrix_kbd.vcd");
         $dumpvars(0, tb_matrix_kbd);
         clk = 0;
         #10
