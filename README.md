@@ -7,7 +7,7 @@ A toolchain utilizada é a [OSS CAD Suite](https://github.com/YosysHQ/oss-cad-su
 - Simulação: [Verilator](https://www.veripool.org/verilator/) ou [Icarus Verilog](https://steveicarus.github.io/iverilog/);
 - Visualização de waveforms: [GTKWave](https://gtkwave.sourceforge.net/);
 - Síntese RTL: [Yosys](https://github.com/YosysHQ/yosys);
-- Place and Route: [nextpnr](https://github.com/YosysHQ/nextpnr) e (Project Trellis)[https://github.com/YosysHQ/prjtrellis];
+- Place and Route: [nextpnr](https://github.com/YosysHQ/nextpnr) e [Project Trellis](https://github.com/YosysHQ/prjtrellis);
 - Gravação da FPGA: [ECPDAP](https://github.com/adamgreig/ecpdap). **Obs.** a versão que vem no OSS CAD Suite está linkada com alguma biblioteca que não reconhece a placa no meu SO (Arch), então eu uso o binário do repositório da própria ferramenta;
 
 ## Makefile
@@ -17,7 +17,7 @@ Há um `Makefile` padrão (importa `rules.mk` na raiz) disponível que facilita 
 - `bit`: processo de compilação completo, gera o bitstream na pasta build;
 - `prog`: compila tudo e executa a gravação com o ECPDAP;
 - `sim`: compila o testbench com o Verilator e roda o executável (gera um `.vcd` e/ou saída na tela);
-- `wave`: executa o `sim` e invoca o GTKWave para `out.vcd`.
+- `wave`: executa o `sim` e invoca o GTKWave para `build/nome-do-top-level.vcd`.
 
 ## Padrões
 Há alguns padrões para facilitar o uso do Makefile:
