@@ -12,8 +12,8 @@ A toolchain utilizada é a [OSS CAD Suite](https://github.com/YosysHQ/oss-cad-su
 
 Além disso, há exemplos utilizando o [LiteX](https://github.com/enjoy-digital/litex), descritos mais abaixo.
 
-## Makefile
-Há um `Makefile` padrão para o fluxo Yosys (importa `rules.mk` na raiz) disponível que facilita o trabalho. Os targets básicos são:
+## Makefile SystemVerilog
+Há um `Makefile` padrão para o fluxo em SystemVerilog (importa `rules.mk` na raiz) disponível que facilita o trabalho. Os targets básicos são:
 - `all`: executa o target `bit`;
 - `lint`: executa o linter do Verilator, detecta erros no código mais cedo no processo de compilação;
 - `bit`: processo de compilação completo, gera o bitstream na pasta build;
@@ -30,6 +30,7 @@ Há alguns padrões para facilitar o uso do Makefile:
     - `tb`: arquivos de testbench (systemverilog)
     - `fpga`: arquivos auxiliares da FPGA (especialmente o `.lpf`)
     - `litex`: definições de SoC usando LiteX (python)
+    - `firmware`: firmware para os SoCs (Asm/C/C++)
     - `build`: arquivos de saída (ex. o bitstream). Também armazena a saída do LiteX.
 - Todos os arquivos de saída terão o nome do TOPLEVEL (definido no Makefile);
 - O arquivo `.vcd` deve ser `build/nome-do-toplevel.vcd`. Ex. `$dumpfile("build/blink.vcd")`;
