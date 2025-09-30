@@ -1,4 +1,11 @@
-*.out
-*.vcd
 obj_dir
 build
+__pycache__
+venv
+*.out
+*.vcd
+*.o
+*.d
+*.bin
+*.hex
+*.elf*
