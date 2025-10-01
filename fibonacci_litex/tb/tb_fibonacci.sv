@@ -1,55 +1,40 @@
-`timescale 1ns/1ps
-
 module tb_fibonacci;
 
     logic clk;
-    logic rst;
+    logic rst_n;
     logic start;
     logic [31:0] n;
     logic [31:0] result;
     logic busy;
 
-    // instância do módulo
-    fibonacci uut (
-        .clk(clk),
-        .rst(rst),
-        .start(start),
-        .n(n),
-        .result(result),
-        .busy(busy)
+    fibonacci dut (
+        .clk_i    (clk   ),
+        .rst_ni   (rst_n ),
+        .start_i  (start ),
+        .n_i      (n     ),
+        .result_o (result),
+        .busy_o   (busy  )
     );
 
-    // clock
-    initial clk = 0;
-    always #5 clk = ~clk; // 100MHz simulado (10ns período)
+    always #5 clk = ~clk;
 
     initial begin
-        // inicialização
-        rst = 1;
+        $dumpfile("build/fibonacci.vcd");
+        $dumpvars(0,dut);
+        clk = 0;
+        rst_n = 0;
         start = 0;
-        n = 10; // por exemplo, 10º termo
         #20;
-        rst = 0;
+        rst_n = 1;
 
-        // iniciar cálculo
-        #10;
-        start = 1;
-        #10;
-        start = 0;
-
-        // esperar cálculo terminar
-        wait (busy == 0);
-        $display("Fibonacci(%0d) = %0d", n, result);
-
-        // teste outro valor
-        #10;
-        n = 15;
-        start = 1;
-        #10;
-        start = 0;
-        wait (busy == 0);
-        $display("Fibonacci(%0d) = %0d", n, result);
-
+        for (n = 0; n < 20; n++) begin
+            #10;
+            start = 1;
+            #10;
+            start = 0;
+            wait (busy == 0);
+            $display("Fibonacci(%0d) = %0d", n, result);
+        end
         $finish;
     end
 endmodule
