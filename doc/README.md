@@ -1,3 +1,9 @@
+# Esquemáticos
+
+- [Placa base HwIT](FPGA_R1.1.pdf)
+- [Placa base Colorlight i5/i9](i5-i9-extboard.pdf)
+- [Placa de interface com FPGA do Laica/CN](interface_fpga_laica.pdf)
+
 # Pinagem da placa de FPGA HwIT
 
 ## Conectores IDC 14 pinos
