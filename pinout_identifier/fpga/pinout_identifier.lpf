@@ -1,0 +1,38 @@
+LOCATE COMP "clk_i" SITE "P3";
+IOBUF PORT "clk_i" IO_TYPE=LVCMOS33;
+FREQUENCY PORT "clk_i" 25 MHZ;
+
+//J1
+//LOCATE COMP "pin1_o" SITE "F3";
+//LOCATE COMP "pin2_o" SITE "G3";
+
+//J2
+//LOCATE COMP "pin1_o" SITE "U17";
+//LOCATE COMP "pin2_o" SITE "U18";
+
+//J3
+//LOCATE COMP "pin1_o" SITE "H5";
+//LOCATE COMP "pin2_o" SITE "H3";
+
+//J4
+//LOCATE COMP "pin1_o" SITE "J20";
+//LOCATE COMP "pin2_o" SITE "K20";
+
+//J5
+//LOCATE COMP "pin1_o" SITE "C1";
+//LOCATE COMP "pin2_o" SITE "D1";
+
+//J6
+//LOCATE COMP "pin1_o" SITE "B4";
+//LOCATE COMP "pin2_o" SITE "C4";
+
+//J7
+//LOCATE COMP "pin1_o" SITE "T1";
+//LOCATE COMP "pin2_o" SITE "R1";
+
+//J8
+//LOCATE COMP "pin1_o" SITE "W1";
+//LOCATE COMP "pin2_o" SITE "Y2";
+
+IOBUF PORT "pin1_o" IO_TYPE=LVCMOS33;
+IOBUF PORT "pin2_o" IO_TYPE=LVCMOS33;
